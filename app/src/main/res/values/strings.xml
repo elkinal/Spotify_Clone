@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HM4_Test</string>
+    <string name="artist_name">Artist name</string>
+    <string name="album_name">Album name</string>
+    <string name="textview">TextView</string>
+    <string name="album_image">album image</string>
+    <string name="album_cover">album cover</string>
+    <string name="song_name">Song Name</string>
+    <string name="artist_names">Artist Name</string>
+    <string name="album_names">Album Name</string>
+    <string name="save">Save</string>
+    <string name="album_namez">Album Name</string>
+    <string name="artist_namez">Artist Name</string>
+    <string name="song_namez">Song Name</string>
+</resources>
