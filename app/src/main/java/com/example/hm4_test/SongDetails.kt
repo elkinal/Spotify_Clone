@@ -1,6 +1,7 @@
 package com.example.hm4_test
 
 import android.content.Intent
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SongDetails : AppCompatActivity() {
     lateinit var music : MediaPlayer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
@@ -36,17 +38,32 @@ class SongDetails : AppCompatActivity() {
         val pauseButton = findViewById<ImageButton>(R.id.pauseButton)
         val stopButton = findViewById<ImageButton>(R.id.stopButton)
 
-        music = MediaPlayer.create(this,R.raw.sample) //replace sound with name of whichever mp3 file
+
+
+        // Getting music from the internet
+        music = MediaPlayer()
+        music.setAudioStreamType(AudioManager.STREAM_MUSIC)
+
+//        music.setDataSource("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+//        music.prepare()
+
+        var loaded : Boolean = false
+
 
         playButton.setOnClickListener{
+            if (!loaded) {
+                music.setDataSource("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+                music.prepare()
+                loaded = true
+            }
             music.start()
         }
         pauseButton.setOnClickListener {
             music.pause()
         }
         stopButton.setOnClickListener {
-            music.stop()
-            music = MediaPlayer.create(this,R.raw.sample)
+            music.pause()
+            music.seekTo(0)
         }
 
 
