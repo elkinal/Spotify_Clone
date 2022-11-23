@@ -12,8 +12,7 @@
         android:text="@string/textview"
         android:textStyle="bold"
         android:textSize="24sp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/detailedArtistName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -24,8 +23,8 @@
         android:text="@string/artist_name"
         android:textSize="20sp"
         android:textStyle="italic"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/detailedSongName"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/detailedCover"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -36,7 +35,8 @@
         android:text="@string/album_name"
         android:layout_marginTop="10dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/detailedArtistName"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/detailedCover"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -45,58 +45,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/cover1"
-        android:layout_marginTop="50dp"
         android:scaleType="fitXY"
         android:minWidth="150dp"
         android:minHeight="150dp"
-        app:layout_constraintTop_toBottomOf="@id/detailedArtistName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:contentDescription="@string/album_image" />
 
-    <EditText
-        android:id="@+id/editAlbumName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/album_namez"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@id/saveButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
 
-    <EditText
-        android:id="@+id/editArtistName"
+    <ImageButton
+        android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/artist_namez"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@id/editAlbumName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <EditText
-        android:id="@+id/editSongName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/song_namez"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@id/editArtistName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailedAlbumName"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
+    <ImageButton
+        android:id="@+id/pauseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/playButton"
+        app:layout_constraintTop_toTopOf="@id/playButton"
+        android:layout_marginStart="15dp"
+        app:srcCompat="@android:drawable/ic_media_pause" />
+
+    <ImageButton
+        android:id="@+id/stopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/playButton"
+        app:layout_constraintRight_toLeftOf="@id/playButton"
+        android:layout_marginEnd="15dp"
+        app:srcCompat="@android:drawable/ic_delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>
