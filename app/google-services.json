@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "641417529800",
+    "project_id": "hack-challenge-92976",
+    "storage_bucket": "hack-challenge-92976.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641417529800:android:cec0833b28601e04ac18fd",
+        "android_client_info": {
+          "package_name": "com.example.hm4_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641417529800-hcva98pj5la6klu9ghu8oh1j2abe12dr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABvMpcbwGKYpxiYCq9Atb9Wz1dAd3v9i0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641417529800-hcva98pj5la6klu9ghu8oh1j2abe12dr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
