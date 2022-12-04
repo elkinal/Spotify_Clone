@@ -44,7 +44,6 @@
         android:id="@+id/detailedCover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cover1"
         android:scaleType="fitXY"
         android:minWidth="150dp"
         android:minHeight="150dp"

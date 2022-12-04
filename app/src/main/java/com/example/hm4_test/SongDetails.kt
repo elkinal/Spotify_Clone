@@ -135,4 +135,9 @@ class SongDetails : AppCompatActivity() {
 
         // TODO: User should be redirected back to the Main Activity
     }
+
+    override fun onStop() {
+        super.onStop()
+        music.release()
+    }
 }
