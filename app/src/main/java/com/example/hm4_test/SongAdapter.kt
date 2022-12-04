@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 
 
@@ -50,11 +48,8 @@ class SongAdapter (
         // Downloading the image from the FireStore Database
 
         // Reference to an image file in Cloud Storage
-        val storageRef = Firebase.storage.reference
-        val pathReference = storageRef.child("sample.jpg")
-
-        val imageref = Firebase.storage.reference.child("sample.jpg")
-        imageref.downloadUrl.addOnSuccessListener {Uri->
+        val imageRef = Firebase.storage.reference.child(song.cover)
+        imageRef.downloadUrl.addOnSuccessListener { Uri->
             val imageURL = Uri.toString()
             Glide.with(context)
                 .load(imageURL)

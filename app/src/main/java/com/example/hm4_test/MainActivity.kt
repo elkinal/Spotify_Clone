@@ -42,20 +42,18 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 for (document in result) {
 //                    Log.d("music", "${document.id} => ${document.data}")
-/*
-                    Log.d("music", document.data["name"] as String)
+/*                    Log.d("music", document.data["name"] as String)
                     Log.d("music", document.data["album"] as String)
                     Log.d("music", document.data["artist"] as String)
                     Log.d("music", document.data["path"] as String)
-                    Log.d("music", document.data["cover"] as String)
-*/
+                    Log.d("music", document.data["cover"] as String)*/
 
                     songList.add(Song(
                         document.data["name"] as String,
                         document.data["album"] as String,
                         document.data["artist"] as String,
-                        document.data["path"] as String,
                         document.data["cover"] as String,
+                        document.data["path"] as String,
                     ))
 
 //                    Log.d("music", songList.size.toString())

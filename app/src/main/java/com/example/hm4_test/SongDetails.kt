@@ -8,6 +8,10 @@ import android.os.Looper
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import java.util.*
 
 class SongDetails : AppCompatActivity() {
@@ -29,8 +33,15 @@ class SongDetails : AppCompatActivity() {
         val album : TextView = findViewById(R.id.detailedAlbumName)
         album.text = MainActivity.songList[position].album
 
+
         val cover : ImageView = findViewById(R.id.detailedCover)
-//        cover.setImageResource(MainActivity.songList[position].cover)
+        val imageRef = Firebase.storage.reference.child(MainActivity.songList[position].cover)
+        imageRef.downloadUrl.addOnSuccessListener { Uri->
+            val imageURL = Uri.toString()
+            Glide.with(this)
+                .load(imageURL)
+                .into(cover)
+        }
 
         // Code responsible for playing the music file itself
         val playButton = findViewById<ImageButton>(R.id.playButton)
@@ -51,7 +62,10 @@ class SongDetails : AppCompatActivity() {
         handler.postDelayed(object : Runnable {
             override fun run() {
                 try {
+//                    seekBar.progress = music.currentPosition
                     seekBar.progress = music.currentPosition
+//                    Log.d("music", music.currentPosition.toString())
+//                    Log.d("music", seekBar.progress.toString())
                     handler.postDelayed(this, 1000)
                 } catch (e: Exception) {
                     seekBar.progress = 0
@@ -66,10 +80,27 @@ class SongDetails : AppCompatActivity() {
 
         playButton.setOnClickListener{
             if (!loaded) {
-                music.setDataSource("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-                music.prepare()
+
+                // Loading the mp3 file from Firestore
+                val storage = FirebaseStorage.getInstance()
+                storage.reference.child(MainActivity.songList[position].path
+                ).downloadUrl.addOnSuccessListener {
+                    music.setDataSource(it.toString())
+                    music.setOnPreparedListener { player ->
+                        player.start()
+                        seekBar.max = player.duration
+                    }
+                    music.prepareAsync()
+                }
+
+
+
+
+//                music.setDataSource("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+//                music.prepare()
                 loaded = true
-                seekBar.max = music.duration
+//                seekBar.max = music.duration
+//                Log.d("music", "duration: " + music.duration.toString())
             }
             music.start()
         }
@@ -79,8 +110,9 @@ class SongDetails : AppCompatActivity() {
             music.pause()
         }
         stopButton.setOnClickListener {
-            music.pause()
-            music.seekTo(0)
+            music.reset()
+            loaded = false;
+//            music.seekTo(0)
             // stop, reset, release, =null
         }
 
