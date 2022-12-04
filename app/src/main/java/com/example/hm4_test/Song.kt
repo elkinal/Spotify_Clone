@@ -4,5 +4,6 @@ data class Song(
     var name : String,
     var album : String,
     var artist : String,
-    var cover : Int
+    var cover : String,
+    var path : String
 )

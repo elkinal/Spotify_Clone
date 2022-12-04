@@ -30,7 +30,7 @@ class SongDetails : AppCompatActivity() {
         album.text = MainActivity.songList[position].album
 
         val cover : ImageView = findViewById(R.id.detailedCover)
-        cover.setImageResource(MainActivity.songList[position].cover)
+//        cover.setImageResource(MainActivity.songList[position].cover)
 
         // Code responsible for playing the music file itself
         val playButton = findViewById<ImageButton>(R.id.playButton)
@@ -61,6 +61,8 @@ class SongDetails : AppCompatActivity() {
 
 
         var loaded = false
+
+        //TODO: Load the song to be played using (-> from firestore by URL)
 
         playButton.setOnClickListener{
             if (!loaded) {
