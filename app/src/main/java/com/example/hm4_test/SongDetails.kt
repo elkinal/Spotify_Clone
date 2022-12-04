@@ -1,5 +1,6 @@
 package com.example.hm4_test
 
+import android.app.ActionBar
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -47,6 +48,9 @@ class SongDetails : AppCompatActivity() {
         val playButton = findViewById<ImageButton>(R.id.playButton)
         val pauseButton = findViewById<ImageButton>(R.id.pauseButton)
         val stopButton = findViewById<ImageButton>(R.id.stopButton)
+
+        // Changing the Action bar header
+        setTitle(MainActivity.songList[position].album + " | " + MainActivity.songList[position].artist)
 
 
 
